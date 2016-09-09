@@ -1,3 +1,7 @@
 ### ~/.gitconfig_user: User-specific configuration for `git`
 
+[user]
+  name = Kaiting Chen
+  email = ktchen14@gmail.com
+
 ### ~/.gitconfig_user: User-specific configuration for `git`

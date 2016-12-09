@@ -25,6 +25,8 @@ Plug 'tpope/vim-surround'
 if executable('editorconfig')
   Plug 'editorconfig/editorconfig-vim'
 endif
+
+Plug 'vim-scripts/syntaxm4.vim'
 call plug#end()
 
 "" General Configuration

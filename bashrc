@@ -73,6 +73,7 @@ alias sudo='sudo '
 # Silence some loud tools on startup
 alias maxima='maxima -q'
 alias octave='octave -q'
+alias psql='psql -q'
 alias R='R -q --no-save'
 
 # Use the cscope database at .cscope

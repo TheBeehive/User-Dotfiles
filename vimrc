@@ -208,6 +208,29 @@ nnoremap <Leader>cI :cs find i <C-r>=expand("<cword>")<CR><CR>
 nnoremap <Leader>ca :cs find a 
 nnoremap <Leader>cA :cs find a <C-r>=expand("<cword>")<CR><CR>
 
+function! ShowSyntax()
+  let synids = reverse(synstack(line('.'), col('.')))
+  let syntax = map(copy(synids), 'synIDattr(v:val, "name")')
+  call map(synids, 'synIDtrans(v:val)')
+  let hilite = map(copy(synids), 'synIDattr(v:val, "name")')
+
+  for i in range(len(hilite))
+    if i > 0 | echon ' « ' | endif
+
+    exec 'echoh ' . hilite[i] | echon hilite[i] | echoh None
+
+    if hilite[i] ==# syntax[i]
+      continue
+    endif
+
+    echon ' '
+    echon '('
+    exec 'echoh ' . syntax[i] | echon syntax[i] | echoh None
+    echon ')'
+  endfor
+endfunc
+nnoremap <silent> <Leader>ss :call ShowSyntax()<CR>
+
 "" Quickfix List
 
 if executable('ag')

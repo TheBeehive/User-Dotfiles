@@ -260,6 +260,14 @@ function! ToggleQuickfixList()
 endfunction
 nnoremap <silent> <Leader>q :call ToggleQuickfixList()<CR>
 
+augroup Quickfix
+  autocmd!
+  autocmd BufReadPost quickfix setlocal modifiable
+        \ | silent exec '%s/|\(\d\+\) col \(\d\+\)|/|\1:\2|/Ige'
+        \ | setlocal nomodifiable
+  autocmd FileType quickfix setlocal nobuflisted
+augroup end
+
 nnoremap <silent> [q :<C-u>exec '' . (v:count ? v:count : '') . 'cprev'<CR>zv
 nnoremap <silent> [Q :<C-u>exec '' . (v:count ? v:count : '') . 'cfirst'<CR>zv
 nnoremap <silent> ]q :<C-u>exec '' . (v:count ? v:count : '') . 'cnext'<CR>zv

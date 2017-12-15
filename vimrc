@@ -297,12 +297,50 @@ endfunction
 nnoremap <silent> gs :call FileHeaderSource()<CR>
 
 "" Filetype Configuration
+
+" Vim 8's default formatoptions are 'tcq' while neovim's are 'tcqj'. Here we:
+" - Disable 't' (auto-wrap text using textwidth)
+" - Enable 'r' (automatically insert the current comment leader after hitting
+"   <Enter> in Insert mode)
+" - Enable 'n' (when formatting text, recognize [any kind of] lists)
+" - Enable 'j' (where it makes sense, remove a comment leader when joining
+"   lines)
+autocmd FileType * setlocal formatoptions=crqnj
+
+" Go doesn't compile without this specific indentation configuration
+autocmd FileType go setlocal ts=2 sts=2 sw=2 noet
+
+" Be PEP-8 compliant
 autocmd FileType python setlocal sw=4 sts=4
+
+" Use the "variable" assignment indentation style in Ruby:
+"     x = if condition
+"       something
+"     end
+" Rather than the "hanging" assignment indentation style:
+"     x = if condition
+"           something
+"         end
+autocmd FileType ruby let g:ruby_indent_assignment_style = 'variable'
+
+autocmd FileType sh let g:sh_no_error= 1
+" Use bash as the global default for syntax highlighting sh
+let g:is_bash=1
+
+" Wrap at column 78 is the convention in Vim
+autocmd FileType vim setlocal tw=78
+
+if executable('xmllint')
+  autocmd FileType xml setlocal formatprg=xmllint\ --format\ -
+endif
+
+autocmd QuickFixCmdPost cscope botright copen
+
+" The automatic indentation for YAML is terrible
+autocmd FileType yaml,yaml.ansible setlocal indentexpr=""
 
 " Open help window splitright with width 78
 autocmd FileType help set bufhidden=unload | wincmd L | vertical resize 78
-
-autocmd QuickFixCmdPost cscope botright copen
 
 "" Plugin Configuration
 

@@ -90,7 +90,9 @@ if exists('&breakindent')
   set breakindent
   set breakindentopt=shift:-2
 endif
+set formatoptions=crqnj
 set showbreak=↪\ 
+set textwidth=80
 
 " Folding options
 set foldopen-=block

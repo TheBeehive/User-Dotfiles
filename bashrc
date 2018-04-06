@@ -90,6 +90,11 @@ hr() {
   printf "%.0s${1:-#}" $(seq 1 $column)
 }
 
+docker_stupid() {
+  docker ps -aq --no-trunc -f status=exited | xargs docker rm
+  docker images -q -f dangling=true | xargs docker rmi
+}
+
 if [ "$OSTYPE" = cygwin ]; then
   # Strip .exe from bash completion
   shopt -s completion_strip_exe

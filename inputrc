@@ -20,6 +20,10 @@ set skip-completed-text on
 "\e[5~": beginning-of-history
 "\e[6~": end-of-history
 
+# Bind Alt + Left/Right Arrow
+"\e[1;9D": backward-word
+"\e[1;9C": forward-word
+
 # Space expands ! and !! in Bash
 $if Bash
   SPACE: magic-space

@@ -50,6 +50,9 @@ fi
 
 # Don't save duplicate commands to the history
 export HISTCONTROL=ignoredups
+export HISTSIZE=
+export HISTFILESIZE=
+shopt -s histappend
 
 # Enable color in `ls`
 if ls --color -d . &> /dev/null; then

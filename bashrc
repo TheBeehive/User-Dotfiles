@@ -70,6 +70,10 @@ fi
 # Enable alias expansion for `sudo`
 alias sudo='sudo '
 
+# Nickname most used commands
+alias g=git
+alias e='$EDITOR'
+
 # Silence some loud tools on startup
 alias maxima='maxima -q'
 alias octave='octave -q'

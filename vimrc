@@ -313,6 +313,10 @@ autocmd FileType * setlocal formatoptions=crqnj
 " Go doesn't compile without this specific indentation configuration
 autocmd FileType go setlocal ts=2 sts=2 sw=2 noet
 
+if executable('jq')
+  autocmd FileType json setlocal formatprg=jq\ .
+endif
+
 " Be PEP-8 compliant
 autocmd FileType python setlocal sw=4 sts=4
 

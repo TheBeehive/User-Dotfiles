@@ -269,6 +269,9 @@ augroup Quickfix
         \ | silent exec '%s/|\(\d\+\) col \(\d\+\)|/|\1:\2|/Ige'
         \ | setlocal nomodifiable
   autocmd FileType quickfix setlocal nobuflisted
+
+  " Automatically open the quickfix window bottom right after a cscope command
+  autocmd QuickFixCmdPost cscope botright copen
 augroup end
 
 nnoremap <silent> [q :<C-u>exec '' . (v:count ? v:count : '') . 'cprev'<CR>zv
@@ -333,8 +336,6 @@ autocmd FileType vim setlocal tw=78
 if executable('xmllint')
   autocmd FileType xml setlocal formatprg=xmllint\ --format\ -
 endif
-
-autocmd QuickFixCmdPost cscope botright copen
 
 " The automatic indentation for YAML is terrible
 autocmd FileType yaml,yaml.ansible setlocal indentexpr=""

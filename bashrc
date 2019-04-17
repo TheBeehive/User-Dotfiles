@@ -1,10 +1,18 @@
 ### ~/.bashrc: Runtime configuration for interactive `bash`
 
+PS1=
+
+# Indicate a Python virtual environment in ()
+show_venv() {
+  [ -n "$VIRTUAL_ENV" ] && echo '('"$(basename "$VIRTUAL_ENV")"') '
+}
+PS1='$(show_venv)'"$PS1"
+
 # Color username red if root or green otherwise
 if [ `id -u` -eq 0 ]; then
-  PS1='\[\e[31;01m\]\u\[\e[m\]'
+  PS1="$PS1"'\[\e[31;01m\]\u\[\e[m\]'
 else
-  PS1='\[\e[32;01m\]\u\[\e[m\]'
+  PS1="$PS1"'\[\e[32;01m\]\u\[\e[m\]'
 fi
 
 # Color current working directory cyan

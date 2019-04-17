@@ -34,5 +34,7 @@ fi
 
 [ -f ~/.bashrc ] && source ~/.bashrc
 
+[ -f ~/.secret ] && source ~/.secret
+
 # vim: set ft=sh:
 ### ~/.bash_profile: Runtime configuration for login `bash`

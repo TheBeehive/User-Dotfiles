@@ -19,6 +19,7 @@ Plug 'sheerun/vim-polyglot'
 Plug 'tommcdo/vim-lion'
 Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-fugitive'
+Plug 'tpope/vim-markdown'
 Plug 'tpope/vim-repeat'
 Plug 'tpope/vim-surround'
 
@@ -342,6 +343,14 @@ set laststatus=2
 let g:lion_squeeze_spaces = 1
 let g:lion_map_left = 'c<'
 let g:lion_map_right = 'c>'
+
+" vim-markdown
+
+let g:markdown_fenced_languages = ['bash=sh', 'python']
+
+" vim-polyglot
+
+let g:polyglot_disabled = ['markdown']
 
 " tagbar
 

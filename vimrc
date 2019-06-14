@@ -404,6 +404,10 @@ let g:tagbar_indent = 0
 let g:tagbar_sort = 0
 nmap <Leader>tt :TagbarToggle<CR>
 
+"" Test Area
+
+" Use this area to test changes to this file
+
 "" Folding Expression and Text
 
 " Ensure that VimrcFoldExpr is callable from this modeline

@@ -124,7 +124,7 @@ nnoremap <CR> :
 xnoremap <CR> :
 onoremap <CR> :
 
-nnoremap <silent><BS> :nohlsearch<CR>
+nnoremap <silent> <BS> :nohlsearch<CR>
 nnoremap Y y$
 nnoremap U <C-r>
 noremap Q @

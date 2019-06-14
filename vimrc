@@ -119,7 +119,10 @@ endfunction
 "" Mappings and Abbreviations
 let mapleader = "\<Space>"
 
+" Use Return to enter Command-line mode
 nnoremap <CR> :
+xnoremap <CR> :
+onoremap <CR> :
 
 nnoremap <silent><BS> :nohlsearch<CR>
 nnoremap Y y$

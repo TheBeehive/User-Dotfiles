@@ -220,6 +220,8 @@ function! ShowSyntax()
   call map(synids, 'synIDtrans(v:val)')
   let hilite = map(copy(synids), 'synIDattr(v:val, "name")')
 
+  echon ''
+
   for i in range(len(hilite))
     if i > 0 | echon ' « ' | endif
 

@@ -323,7 +323,7 @@ if executable('jq')
 endif
 
 " Be PEP-8 compliant
-autocmd FileType python setlocal sw=4 sts=4
+autocmd FileType python setlocal sw=4 sts=4 tw=79
 
 " Use the "variable" assignment indentation style in Ruby:
 "     x = if condition

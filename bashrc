@@ -62,12 +62,15 @@ export HISTSIZE=
 export HISTFILESIZE=
 shopt -s histappend
 
-# Enable color in `ls`
-if ls --color -d . &> /dev/null; then
-  # This is GNU ls
+# Alias `ls` to `exa` or enable color in `ls`
+if command -v exa > /dev/null; then
+  alias ls=exa
+  alias tree='exa -T'
+elif ls --color -d . &> /dev/null; then
+  # This is GNU `ls`
   alias ls='ls --color'
 elif ls -G -d . &> /dev/null; then
-  # This is BSD ls
+  # This is BSD `ls`
   alias ls='ls -G'
 fi
 

@@ -441,4 +441,34 @@ function! VimrcFoldText()
   return '+' . v:folddashes . ' ' . name . ' '
 endfunction
 
-" vim: set fdm=expr fde=VimrcFoldExpr() fdt=VimrcFoldText():
+function! DotFileFoldExpr()
+  " Determine the prefix that identifies a comment string. If a comment string
+  " isn't identified with a simple prefix then bail.
+  let prefix = matchstr(&commentstring, '^\s*\zs\S\+\ze\s*%s$')
+  if empty(prefix) | return 0 | endif
+
+  " Don't fold the header
+  if v:lnum == 1 | return 0 | endif
+
+  " Get the line without leading and trailing whitespace
+  let line = matchstr(getline(v:lnum), '^\s*\zs.\{-}\ze\s*$')
+  if empty(line) | return -1 | endif
+
+  " Get the number of leading " characters
+  let length = matchend(line, '^\V' . escape(prefix, '\\') . '\{2,}')
+  return length > 1 ? '>1' : '='
+endfunction
+
+function! DotFileFoldText()
+  " Determine the prefix that identifies a comment string
+  let prefix = matchstr(&commentstring, '^\s*\zs\S\+\ze\s*%s$')
+
+  " Extract the fold name from the text after the prefix string
+  let prefix_regexp = '\V' . escape(prefix, '\\') . '\*\m'
+  let name_regexp = '^\s*' . prefix_regexp . '\s*\zs.\{-}\ze\s*$'
+  let name = matchstr(getline(v:foldstart), name_regexp)
+
+  return '+' . v:folddashes . ' ' . name . ' '
+endfunction
+
+""" vim: set fdm=expr fde=VimrcFoldExpr() fdt=VimrcFoldText():
